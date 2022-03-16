@@ -10,11 +10,10 @@ if(i >= 1) {
 
 # Problem 3
 We will denote the males with 1 and the females with 0
-All the possible ways we can select 5 people out of 14 (6 men + 8 women) is 240240 if the order matters
 a <- c(1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0)
 ResultsVector <- NULL
 ResultsVector2 <- NULL
-for(i in 1:240240){
+for(i in 1:50000){
     ResultsVector <- c(sample(a, 5, replace = FALSE))
   if(sum(ResultsVector) == 3){
     ResultsVector2 = c(ResultsVector2, 1)
