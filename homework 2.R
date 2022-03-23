@@ -1,21 +1,24 @@
 # Problem 1
 Bet <- 1
 sumLenght <- NULL
+Budget <- 100
 for (i in 1:1000) {
   Budget <- 100
-  t <- while (Budget > 0) {
-    Budget <- Budget - Bet
+  h <- while (Budget > 0) {
+    Budget <- Budget
     winOrLoss <- sample(c(0, 1), 1, replace = TRUE, prob = c(0.514, 0.486))
     if (winOrLoss == 0) {
       Bet <- Bet * 2
+      Budget <- Budget - Bet
     } else {
-      Bet <- c(-1)  
+      Bet <- 1
+      Budget <- Budget + 1
     }
   }
-  sumLenght <- sumLenght + length(t)}
+  sumLenght <- sumLenght + length(h)}
 averageLenght <- sumLenght / 1000
 
-I am not sure about this task. I can't run the code properly for some reason.
+I am not sure about this task. I can't calculate the length of the while loop.
 
 #Do all the exercises:
 # 5.2.4 Exercises 
