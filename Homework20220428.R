@@ -7,6 +7,7 @@ library(dplyr)
 data <- c(0, 2, 4, 6, 7, 3, 2, 9, 17, 14, 15, 0, 4, 3)
 for (i in 1:length(data)){
   d <- c(d, mean(data[i:(i+3)]))}
+d <- ifelse(is.na(d), NA, sss)
 # 1.2 cor
 m <- c(41, 19, 23, 40, 55, 57, 33)
 n <- c(94, 60, 74, 71, 82, 76, 61)
