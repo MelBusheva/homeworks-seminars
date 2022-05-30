@@ -22,8 +22,8 @@ Join <- Dates %>%
 
 JoinNew <- Join %>%
   mutate(SMA = SMA(adjusted, n = 20),
-         Upper.bond = SMA+2*sd(lag(SMA)),
-         Lower.bond = SMA-2*sd(lag(SMA))) %>%
+         Upper.bond = SMA+2*sd(extractObs(SMA, ANY)),
+         Lower.bond = SMA-2*sd(extractObs(SMA, ANY))) %>%
   ungroup() %>%
   mutate(Signal = case_when(adjusted > Upper.bond ~ "sell",
                             adjusted < Lower.bond ~ "buy",
