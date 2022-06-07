@@ -22,11 +22,12 @@ Join <- Dates %>%
 
 JoinNew <- Join %>%
   mutate(SMA = SMA(adjusted, n = 20),
-         Upper.bond = SMA+2*sd(extractObs(SMA, ANY)),
-         Lower.bond = SMA-2*sd(extractObs(SMA, ANY))) %>%
+         SD20 = RcppRoll: roll_sd(adjusted, n=20, alight= "right"),
+         Upper.bond = SMA+2*SD20,
+         Lower.bond = SMA-2*SD20)) %>%
   ungroup() %>%
-  mutate(Signal = case_when(adjusted > Upper.bond ~ "sell",
-                            adjusted < Lower.bond ~ "buy",
+  mutate(Signal = case_when(adjusted > Upper.bond & lag(adjusted) < lag(Upper.bond) ~ "sell",
+                            adjusted < Lower.bond & lag(adjusted) > lag(Lower.bond)~ "buy",
                              TRUE ~ "hold"))
 #Problem 1#
 
